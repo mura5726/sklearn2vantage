@@ -318,7 +318,7 @@ def load_model_forest(df_model, engine, table_name):
     dtype_tree_model = {"worker_ip": String(max_len("worker_ip")),
                         "task_index": Integer,
                         "tree_num": Integer,
-                        "tree": CLOB(max_len("tree")+1)}
+                        "tree": CLOB(max_len("tree")*2)}
     dataloader.dropIfExists(table_name, engine.url.database, engine)
     df_model.to_sql(name=table_name, con=engine,
                     index=False,
